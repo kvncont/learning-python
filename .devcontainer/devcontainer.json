@@ -1,22 +1,47 @@
-// For format details, see https://aka.ms/devcontainer.json. For config options, see the
-// README at: https://github.com/devcontainers/templates/tree/main/src/python
 {
-	"name": "Python 3",
-	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-	"image": "mcr.microsoft.com/devcontainers/python:1-3.12-bullseye"
-
-	// Features to add to the dev container. More info: https://containers.dev/features.
-	// "features": {},
-
-	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// "forwardPorts": [],
-
-	// Use 'postCreateCommand' to run commands after the container is created.
-	// "postCreateCommand": "pip3 install --user -r requirements.txt",
-
-	// Configure tool-specific properties.
-	// "customizations": {},
-
-	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
-	// "remoteUser": "root"
+    "name": "Learning Python",
+    "image": "mcr.microsoft.com/devcontainers/python:1-3.12-bullseye",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "Postman.postman-for-vscode",
+                "GitHub.copilot",
+                "GitHub.copilot-chat",
+                "ms-python.python",
+                "ms-python.black-formatter",
+                "ms-python.isort",
+                "ms-python.pylint"
+            ],
+            "settings": {
+                "editor.bracketPairColorization.enabled": true,
+                "editor.insertSpaces": true,
+                "editor.detectIndentation": false,
+                "editor.tabSize": 4,
+                "files.encoding": "utf8",
+                "terminal.integrated.scrollback": 20000,
+                "python.languageServer": "Pylance",
+                "python.formatting.provider": "none",
+                "[jsonc]": {
+                    "editor.defaultFormatter": "vscode.json-language-features",
+                    "editor.tabSize": 4
+                },
+                "[python]": {
+                    "editor.defaultFormatter": "ms-python.black-formatter",
+                    "editor.formatOnSave": true,
+                    "editor.codeActionsOnSave": {
+                        "source.organizeImports": "explicit",
+                        "source.unusedImports": "explicit"
+                    },
+                    "editor.tabSize": 4
+                },
+                "isort.args": [
+                    "--profile",
+                    "black"
+                ]
+            }
+        }
+    },
+    "mounts": [
+        "source=${localEnv:HOME}${localEnv:USERPROFILE}/.ssh,target=/home/vscode/.ssh,type=bind,consistency=cached"
+    ]
 }
