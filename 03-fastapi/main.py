@@ -38,7 +38,7 @@ class Product(BaseModel):
         json_schema_extra=product_schema,
     )
 
-    id: UUID4 = Field(default_factory=uuid.uuid4)
+    id: UUID4 =  
     name: str = Field(min_length=2, max_length=100)
     description: str = Field(min_length=2, max_length=250)
     brand: str = Field(min_length=2, max_length=30)
